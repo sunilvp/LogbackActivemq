@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="logback-core-1.0.13">
+    <CLASSES>
+      <root url="jar://C:/Softwares/logback jars/slf4j.jar!/" />
+      <root url="jar://C:/Softwares/logback jars/logback-1.1.7/logback-access-1.1.7.jar!/" />
+      <root url="jar://C:/Softwares/logback jars/logback-1.1.7/logback-classic-1.1.7.jar!/" />
+      <root url="jar://C:/Softwares/logback jars/logback-1.1.7/logback-core-1.1.7.jar!/" />
+      <root url="jar://C:/Softwares/logback jars/activemq-all.jar!/" />
+      <root url="jar://C:/Softwares/logback jars/javax.jms.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
