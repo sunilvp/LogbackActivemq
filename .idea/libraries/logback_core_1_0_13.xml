@@ -7,6 +7,7 @@
       <root url="jar://C:/Softwares/logback jars/logback-1.1.7/logback-core-1.1.7.jar!/" />
       <root url="jar://C:/Softwares/logback jars/activemq-all.jar!/" />
       <root url="jar://C:/Softwares/logback jars/javax.jms.jar!/" />
+      <root url="jar://C:/work/NSP/pcep logs/pcepviewer.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

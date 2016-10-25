@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration scan="true" scanPeriod="10 seconds" debug="true">
 
     <appender name="FILE-AUDIT"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>C:/Users/suvp/IdeaProjects/LogbackActiveMq/myLog.log</file>
+        <file>C:/Users/suvp/logs/myLog.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
-                %d{yyyy-MM-dd HH:mm:ss} - %msg%n
+                %d{yyyy-MM-dd HH:mm} - %msg%n
             </Pattern>
         </encoder>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>${DEV_HOME}/archived/debug.%d{yyyy-MM-dd}.%i.log
+            <fileNamePattern>C:/Users/suvp/logs/archived/debug.%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -22,8 +22,28 @@
 
     </appender>
 
-        <appender name="JMS_APPENDER_QUEUE"
-                             class="ch.qos.logback.classic.net.JMSQueueAppender">
+    <appender name="FILE-AUDIT-NEW"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>C:/Users/suvp/logs/myLogNew.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm} - %msg%n
+            </Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>C:/Users/suvp/logs/archived/debugMyLogNew.%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+
+    </appender>
+
+    <appender name="JMS_APPENDER_QUEUE"
+              class="ch.qos.logback.classic.net.JMSQueueAppender">
         <InitialContextFactoryName>
             org.apache.activemq.jndi.ActiveMQInitialContextFactory
         </InitialContextFactoryName>
@@ -43,15 +63,19 @@
     </appender>
 
 
-    <logger name="moudule.MyClass" level="debug"
+    <logger name="module.MyClass" level="debug"
             additivity="false">
         <appender-ref ref="FILE-AUDIT" />
         <appender-ref ref="JMS_APPENDER_QUEUE" />
         <appender-ref ref="JMS_APPENDER_TOPIC" />
     </logger>
 
+    <logger name="module.MyClass.NewClass" level="debug"
+            additivity="true">
+        <appender-ref ref="FILE-AUDIT-NEW" />
+    </logger>
+
     <root level="error">
-        <appender-ref ref="FILE-AUDIT" />
     </root>
 
 </configuration>
